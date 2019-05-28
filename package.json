@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/dalisoft/nanoexpress#readme",
   "dependencies": {
-    "@dalisoft/events": "0.0.7",
+    "@dalisoft/events": "0.0.9",
     "@sifrr/server": "0.0.5",
     "cookie": "^0.4.0",
     "fast-json-stringify": "^1.15.2",
