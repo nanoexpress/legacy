@@ -3,13 +3,10 @@ import { parse } from 'querystring';
 export default (req, queries) => {
   const query = req.getQuery();
 
-  if (query.indexOf('?') === -1) {
+  if (query.length < 3) {
     return queries;
   }
-  if (query.length < 4) {
-    return queries;
-  }
-  const parsedQueries = parse(query.substr(1));
+  const parsedQueries = parse(query);
 
   if (!queries) {
     queries = {};
