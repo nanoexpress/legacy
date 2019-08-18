@@ -14,6 +14,8 @@ Nano-framework for Node.js powered by uWebSockets.js
 
 Documentation available [here](https://github.com/dalisoft/nanoexpress/blob/master/docs/index.md)
 
+**Are you want faster and stable performance with extra features, see [PRO](https://github.com/dalisoft/nanoexpress/tree/pro) version**
+
 _If you want **Suport** me, please see [Support](#support) section_
 
 _See [**Credits**](#credits) if you want which libraries i've used_
