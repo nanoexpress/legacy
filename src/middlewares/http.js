@@ -123,5 +123,5 @@ export default (path = '/*', fns, config, ajv, method, app) => {
   handler.simple = route.simple;
   handler.asyncToSync = asyncToSync;
 
-  return http(path, handler, config, schema, ajv, method, app, validationMap);
+  return http(path, handler, config, schema, ajv, method, validationMap, app);
 };
