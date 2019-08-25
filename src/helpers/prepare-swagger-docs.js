@@ -56,7 +56,8 @@ export default function swaggerDocsGenerator(
           name,
           in: type,
           description: value.description,
-          required: value.required,
+          required:
+            schemaItem.required && schemaItem.required.indexOf(name) !== -1,
           schema: value
         });
       }
