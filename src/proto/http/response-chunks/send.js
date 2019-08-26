@@ -15,7 +15,7 @@ export default function send(result) {
   if (result === null || result === undefined) {
     this.end('');
   } else if (typeof result === 'object') {
-    this.writeHeader('Content-Type', 'application/json');
+    this.setHeader('Content-Type', 'application/json');
 
     if (this.schema) {
       const { schema } = this;
