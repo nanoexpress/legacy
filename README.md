@@ -26,7 +26,7 @@ This library does not support HTTP2!
 
 ## NOTE
 
-This library reached the `Alpha` status and works good, see `/examples` folder.
+This library reached the `Beta` status and works good, see `/examples` folder.
 
 This library up to 25% slower than `uWebSockets.js` on normal and complex application because of method polyfilling layer. Basic usage/examples performance are same as `uWebSockets.js`, but not in all case gives you same performance.
 

@@ -14,12 +14,20 @@ This library does not support HTTP2!
 
 ```bash
 npm install nanoexpress
+# or
+npm install nanoexpress@latest
+# or
+npm install nanoexpress@{VER}-beta
 ```
 
 ### yarn
 
 ```bash
 yarn add nanoexpress
+# or
+yarn add nanoexpress@latest
+# or
+yarn add nanoexpress@{VER}-beta
 ```
 
 ## Let's create server
