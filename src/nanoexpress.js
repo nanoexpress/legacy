@@ -7,7 +7,6 @@ import util from 'util';
 import { getMime, sendFile } from './helpers/sifrr-server';
 
 import { http, ws } from './middlewares';
-import { routeMapper } from './helpers';
 
 const readFile = util.promisify(fs.readFile);
 
@@ -292,8 +291,6 @@ const nanoexpress = (options = {}) => {
       return _app;
     };
   });
-
-  _app.define = routeMapper(_app);
 
   return _app;
 };
