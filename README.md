@@ -85,7 +85,8 @@ Built-in middlewares implemented at layer-level for performance reason and enabl
 - `express-ws` (for comparing, uWS has built-in support at core-level)
 - `fast-json-stringify` (for serialization)
 - `express-ajv` (for comparing, for validation, this library does it at layer-level)
-- `express-declarative-routing` (for comparing, this library does it at layer-level)
+- `redoc`
+- `swagger-ui`
 
 ## In-box Middlewares
 

@@ -1,6 +1,6 @@
 {
   "name": "nanoexpress",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Nano-framework for Node.js powered by uWebSockets.js",
   "main": "build/nanoexpress.js",
   "module": "src/nanoexpress.js",
@@ -60,6 +60,7 @@
     "cookie": "^0.x",
     "fast-json-stringify": "^1.x",
     "passport": "^0.4.0",
-    "ajv": "^6.x"
+    "ajv": "^6.x",
+    "swagger-ui-dist": "^3.23.6"
   }
 }
