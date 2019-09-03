@@ -36,5 +36,7 @@ export default function send(result) {
     this.end(result);
   }
 
+  this.aborted = true;
+
   return this;
 }

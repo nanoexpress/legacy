@@ -20,6 +20,8 @@ export default function modifyEnd() {
         this.writeStatus(statusCode);
       }
 
+      this.aborted = true;
+
       return _oldEnd.call(this, chunk, encoding);
     };
 
