@@ -1,4 +1,4 @@
-/* globals describe, it, expect */
+/* globals describe, it, expect, beforeEach */
 import { HttpResponse } from '../../src/proto';
 
 // Init Fake HttpResponse
@@ -21,6 +21,14 @@ Object.assign(Response.prototype, HttpResponse);
 
 describe('http response send', () => {
   const fakeRes = new Response();
+
+  // Our new Response method checks
+  // for response status (aborted) first
+  // Then reacts, response or no
+
+  beforeEach(() => {
+    fakeRes.aborted = false;
+  });
 
   it('res.send', () => {
     fakeRes.send('res.send works');
