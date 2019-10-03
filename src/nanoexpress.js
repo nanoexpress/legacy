@@ -8,6 +8,8 @@ import { getMime, sendFile } from './helpers/sifrr-server';
 
 import { http, ws } from './middlewares';
 
+import logger from './helpers/logger';
+
 const readFile = util.promisify(fs.readFile);
 
 let Ajv;
@@ -15,8 +17,8 @@ let Ajv;
 try {
   Ajv = require('ajv');
 } catch (e) {
-  console.error(
-    '[nanoexpress]: `Ajv` was not found in your dependencies list' +
+  logger.error(
+    '`Ajv` was not found in your dependencies list' +
       ', please install yourself for this feature working properly'
   );
 }
@@ -56,7 +58,7 @@ const nanoexpress = (options = {}) => {
 
   config.setAjv = () => {
     if (typeof Ajv !== 'function') {
-      console.error('[nanoexpress]: `Ajv` was not initialized properly');
+      logger.error('`Ajv` was not initialized properly');
       return;
     }
     ajv = new Ajv(options.ajv);
@@ -94,7 +96,7 @@ const nanoexpress = (options = {}) => {
     listen: (port, host) =>
       new Promise((resolve, reject) => {
         if (port === undefined) {
-          console.log('[Server]: PORT is required');
+          logger.error('[Server]: PORT is required');
           return undefined;
         }
         if (middlewares && middlewares.length > 0 && !middlewares.called) {
@@ -121,14 +123,16 @@ const nanoexpress = (options = {}) => {
 
           if (token) {
             _app._instance = token;
-            console.log(
+            logger.log(
               `[Server]: started successfully at [${
                 config.host
               }:${port}] in [${Date.now() - time}ms]`
             );
             resolve(_app);
           } else {
-            console.log(`[Server]: failed to host at [${config.host}:${port}]`);
+            logger.error(
+              `[Server]: failed to host at [${config.host}:${port}]`
+            );
             reject(
               new Error(`[Server]: failed to host at [${config.host}:${port}]`)
             );
@@ -143,10 +147,10 @@ const nanoexpress = (options = {}) => {
         config.port = null;
         uWS.us_listen_socket_close(_app._instance);
         _app._instance = null;
-        console.log('[Server]: stopped successfully');
+        logger.log('[Server]: stopped successfully');
         return true;
       } else {
-        console.log('[Server]: Error, failed while stopping');
+        logger.error('[Server]: Error, failed while stopping');
         return false;
       }
     },

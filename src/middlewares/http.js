@@ -2,7 +2,8 @@ import { http } from '../handler';
 import {
   prepareValidation,
   prepareRouteFunctions,
-  prepareSwaggerDocs
+  prepareSwaggerDocs,
+  logger
 } from '../helpers';
 
 export default (path = '/*', fns, config, ajv, method, app) => {
@@ -49,7 +50,7 @@ export default (path = '/*', fns, config, ajv, method, app) => {
   }
 
   if (route === undefined) {
-    console.error('[nanoexpress]: Route - route function was not defined', {
+    logger.error('Route - route function was not defined', {
       route,
       path,
       method

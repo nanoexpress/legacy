@@ -40,6 +40,7 @@
   "homepage": "https://github.com/dalisoft/nanoexpress#readme",
   "dependencies": {
     "@dalisoft/events": "^0.0.x",
+    "debug": "^4.1.1",
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#v15.11.0"
   },
   "devDependencies": {
@@ -57,10 +58,10 @@
     "rollup-plugin-run": "^1.1.0"
   },
   "peerDependencies": {
+    "ajv": "^6.x",
     "cookie": "^0.x",
     "fast-json-stringify": "^1.x",
     "passport": "^0.4.0",
-    "ajv": "^6.x",
     "swagger-ui-dist": "^3.23.6"
   }
 }

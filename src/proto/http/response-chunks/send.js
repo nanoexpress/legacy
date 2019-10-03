@@ -1,7 +1,9 @@
+import logger from '../../../helpers/logger';
+
 export default function send(result) {
   /* If we were aborted, you cannot respond */
   if (this.aborted) {
-    console.error('[Server]: Error, Response was aborted before responsing');
+    logger.error('[Server]: Error, Response was aborted before responsing');
     return undefined;
   }
   if (this._headers && this.writeHead && !this._headWritten && !this.aborted) {

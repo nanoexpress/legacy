@@ -1,17 +1,19 @@
+import logger from '../../../helpers/logger';
+
 let cookie;
 
 try {
   cookie = require('cookie');
 } catch (e) {
-  console.error(
-    '[nanoexpress]: `cookie` was not found in your dependencies list' +
+  logger.error(
+    '`cookie` was not found in your dependencies list' +
       ', please install yourself for this feature working properly'
   );
 }
 
 export default function setCookie(name, value, options) {
   if (!cookie || !cookie.serialize) {
-    return;
+    return undefined;
   }
 
   if (options.expires && Number.isInteger(options.expires)) {
