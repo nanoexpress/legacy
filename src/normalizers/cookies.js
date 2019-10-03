@@ -13,7 +13,7 @@ try {
 
 export default (req, cookies) => {
   if (!cookie || !cookie.parse) {
-    return;
+    return undefined;
   }
   const { headers } = req;
   const headerCookie =
