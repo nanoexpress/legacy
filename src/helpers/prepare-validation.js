@@ -1,12 +1,13 @@
 import isHttpCode from './is-http-code';
+import logger from '../helpers/logger';
 
 let fastJson;
 
 try {
   fastJson = require('fast-json-stringify');
 } catch (e) {
-  console.error(
-    '[nanoexpress]: `fast-json-stringify` was not found in your dependencies list' +
+  logger.error(
+    '`fast-json-stringify` was not found in your dependencies list' +
       ', please install yourself for this feature working properly'
   );
 }
@@ -50,9 +51,7 @@ export default (ajv, schema, config) => {
       if (typeof _schema === 'object' && _schema) {
         if (type === 'response') {
           if (typeof fastJson !== 'function') {
-            console.error(
-              '[nanoexpress]: `fast-json-stringify` was not initialized properly'
-            );
+            logger.error('`fast-json-stringify` was not initialized properly');
             return;
           }
           const isHttpCodes = Object.keys(_schema).every(isHttpCode);
