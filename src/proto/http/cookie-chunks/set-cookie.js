@@ -13,7 +13,7 @@ try {
 
 export default function setCookie(name, value, options) {
   if (!cookie || !cookie.serialize) {
-    return;
+    return undefined;
   }
 
   if (options.expires && Number.isInteger(options.expires)) {
