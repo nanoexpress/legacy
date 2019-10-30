@@ -111,7 +111,7 @@ const nanoexpress = (options = {}) => {
           }
         }
         port = Number(port);
-        app.listen(port, host, (token) => {
+        app.listen(host, port, (token) => {
           if (typeof host === 'string') {
             config.host = host;
           } else {
