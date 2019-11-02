@@ -314,6 +314,8 @@ const nanoexpress = (options = {}) => {
     };
   });
 
+  _app.publish = app.publish;
+
   return _app;
 };
 
