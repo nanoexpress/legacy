@@ -95,6 +95,17 @@ const nanoexpress = (options = {}) => {
     },
     listen: (port, host) =>
       new Promise((resolve, reject) => {
+        if (typeof port === 'string' && port.indexOf('.') !== -1) {
+          const _port = host;
+
+          host = port;
+
+          if (_port) {
+            port = _port;
+          } else {
+            port = undefined;
+          }
+        }
         if (port === undefined) {
           logger.error('[Server]: PORT is required');
           return undefined;
@@ -111,7 +122,8 @@ const nanoexpress = (options = {}) => {
           }
         }
         port = Number(port);
-        app.listen(port, host, (token) => {
+
+        const onListen = (token) => {
           if (typeof host === 'string') {
             config.host = host;
           } else {
@@ -139,7 +151,13 @@ const nanoexpress = (options = {}) => {
             config.host = null;
             config.port = null;
           }
-        });
+        };
+
+        if (host) {
+          app.listen(host, port, onListen);
+        } else {
+          app.listen(port, onListen);
+        }
       }),
     close: () => {
       if (_app._instance) {

@@ -1,7 +1,7 @@
 import { headers, cookies, queries, params, body } from '../../normalizers';
 
-function getIPBuffer() {
-  return this.__response.getRemoteAddress();
+function getIP() {
+  return Buffer.from(this.__response.getRemoteAddress()).join('.');
 }
 
 export default (req, res, bodyCall, schema) => {
@@ -16,7 +16,7 @@ export default (req, res, bodyCall, schema) => {
   req.baseUrl = '';
 
   req.__response = res;
-  req.getIPBuffer = getIPBuffer;
+  req.getIP = getIP;
 
   req.headers =
     !schema || schema.headers !== false
