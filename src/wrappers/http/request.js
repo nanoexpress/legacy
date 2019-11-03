@@ -1,3 +1,5 @@
+/** global: Buffer */
+
 import { headers, cookies, queries, params, body } from '../../normalizers';
 
 function getIP() {
