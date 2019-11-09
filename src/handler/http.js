@@ -27,13 +27,18 @@ export default (
     req.rawPath = path;
     req.method = methodUpperCase || req.getMethod();
 
+    let errors;
     const request =
       bodyCall && res.onData
-        ? await http.request(req, res, bodyCall, schema)
+        ? await http.request(req, res, bodyCall, schema).catch((err) => {
+          errors = {
+            type: 'errors',
+            errors: [{ type: 'body', messages: [err.message] }]
+          };
+        })
         : http.request(req, res, false, schema);
 
     if (validationStringify) {
-      let errors;
       for (let i = 0, len = validation.length; i < len; i++) {
         const { type, validator } = validation[i];
 
@@ -78,6 +83,14 @@ export default (
     }
 
     const response = http.response(res, req, config);
+
+    if (!validationStringify && errors) {
+      if (config._validationErrorHandler) {
+        return config._validationErrorHandler(errors, req, res);
+      } else {
+        return res.send(errors);
+      }
+    }
 
     if (
       !fn.async ||
