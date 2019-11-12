@@ -14,12 +14,12 @@ app.setValidationErrorHandler((errors, req, res) => {
   res.end('validation errors, ' + JSON.stringify(errors));
 });
 
-app.use((req, res, next) => {
-  next(new Error('error happened?'));
-});
-
 app.get('/', (req, res) => {
   res.end('hello world');
+});
+
+app.get('/err', async () => {
+  throw new Error('error created');
 });
 
 app.listen(4000);

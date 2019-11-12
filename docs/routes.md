@@ -4,6 +4,8 @@ Routes are intellectual, not only good, because if your routes are simple, libra
 
 Performance tip: _Using many middlewares may slow response performance_
 
+Note: If you want auto-handling your route, use as `Async` route. It's known bug!
+
 ## Async route
 
 ### Basic Async example
@@ -77,6 +79,7 @@ app.get('/', { isPrefix: '/v1' }, (req, res) => {
 ## Known Issues
 
 - See [my comment on #28](https://github.com/dalisoft/nanoexpress/issues/28#issuecomment-520485552) and [here](https://github.com/uNetworking/uWebSockets.js/issues/123)
+- You should convert your route to `Async` route for Error to be handled by `nanoexpress`
 
 [&laquo; Websocket](./websocket.md)
 

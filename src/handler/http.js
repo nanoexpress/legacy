@@ -114,7 +114,9 @@ export default (
       return undefined;
     }
 
-    const result = await fn(request, response, config);
+    const result = await fn(request, response, config).catch((error) => ({
+      error
+    }));
 
     if (res.aborted || res.stream) {
       return undefined;
