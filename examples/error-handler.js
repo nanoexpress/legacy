@@ -3,7 +3,7 @@ const nanoexpress = require('..');
 const app = nanoexpress();
 
 app.setErrorHandler((err, req, res) => {
-  res.end(err.message);
+  res.end('error was handled: ' + err.message);
 });
 
 app.setNotFoundHandler((res) => {
