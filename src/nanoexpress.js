@@ -123,15 +123,17 @@ const nanoexpress = (options = {}) => {
         }
 
         // Set not found handler
-        app.get(
-          '/*',
-          config._notFoundHandler ||
-            ((res) => {
-              res.end(
-                '{"middleware_type":"sync","error":"The route handler not found"}'
-              );
-            })
-        );
+        if (!_app.anyApplied) {
+          app.get(
+            '/*',
+            config._notFoundHandler ||
+              ((res) => {
+                res.end(
+                  '{"middleware_type":"sync","error":"The route handler not found"}'
+                );
+              })
+          );
+        }
         port = Number(port);
 
         const onListen = (token) => {
@@ -317,6 +319,9 @@ const nanoexpress = (options = {}) => {
         method,
         _app
       );
+
+      _app.anyApplied = path === '/*';
+
       app[method](
         typeof path === 'string' ? path : '/*',
         typeof path === 'function' && !handler ? path : handler

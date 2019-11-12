@@ -4,14 +4,13 @@ import http from 'http';
 
 describe('bind to specific host', function() {
   let app = null;
-  beforeAll(async () => {
-    app = await nanoexpress()
-      .any('*', (req, resp) => {
-        // console.log("got request")
-        resp.end(Buffer.from(resp.getRemoteAddress()).join('.'));
-      })
-      .listen(3000, '127.0.0.1');
-    return app;
+
+  beforeAll(() => {
+    app = nanoexpress().any('/*', (req, res) => {
+      // console.log("got request")
+      res.end(Buffer.from(res.getRemoteAddress()).join('.'));
+    });
+    return app.listen(3000, '127.0.0.1');
   });
 
   afterAll(() => {
