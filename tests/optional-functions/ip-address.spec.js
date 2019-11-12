@@ -1,4 +1,4 @@
-/* globals describe, it, expect, beforeAll, afterAll */
+/* globals Buffer, describe, it, expect, beforeAll, afterAll */
 import nanoexpress from '../../src/nanoexpress';
 import http from 'http';
 
