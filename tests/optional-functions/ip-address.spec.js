@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-redeclare
 /* globals Buffer, describe, it, expect, beforeAll, afterAll */
 import nanoexpress from '../../src/nanoexpress';
 import http from 'http';
