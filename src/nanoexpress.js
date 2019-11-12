@@ -320,7 +320,9 @@ const nanoexpress = (options = {}) => {
         _app
       );
 
-      _app.anyApplied = path === '/*';
+      if (!_app.anyApplied && method !== 'options') {
+        _app.anyApplied = path === '/*';
+      }
 
       app[method](
         typeof path === 'string' ? path : '/*',
