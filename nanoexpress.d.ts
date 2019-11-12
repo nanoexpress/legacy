@@ -199,7 +199,7 @@ declare namespace nanoexpress {
     ): nanoexpressApp;
     setNotFoundHandler(
       notFoundHandlerCallback: (
-        res: HttpRequestBasic,
+        res: HttpResponseBasic,
         req: HttpRequestBasic
       ) => HttpRequestBasic
     ): nanoexpressApp;

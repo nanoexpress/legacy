@@ -121,6 +121,17 @@ const nanoexpress = (options = {}) => {
             middleware.called = true;
           }
         }
+
+        // Set not found handler
+        app.get(
+          '/*',
+          config._notFoundHandler ||
+            ((res) => {
+              res.end(
+                '{"middleware_type":"sync","error":"The route handler not found"}'
+              );
+            })
+        );
         port = Number(port);
 
         const onListen = (token) => {
