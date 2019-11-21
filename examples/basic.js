@@ -1,8 +1,6 @@
 const nanoexpress = require('..');
 
-const app = nanoexpress({
-  strictPath: true
-});
+const app = nanoexpress();
 
 app.get(
   '/',
