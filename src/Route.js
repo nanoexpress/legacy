@@ -148,9 +148,13 @@ export default class Route {
       return middleware;
     });
 
+    // Prepare params
+    const preparedParams =
+      (!_schema || _schema.params !== false) && prepareParams(path);
+
     // Quick dirty hack to performance improvement
     if (!isCanCompiled && middlewares.length === 0) {
-      const compile = RouteCompiler(routeFunction);
+      const compile = RouteCompiler(routeFunction, preparedParams);
 
       if (compile) {
         isCanCompiled = true;
@@ -247,11 +251,6 @@ export default class Route {
     if (originalUrl.length > 1 && originalUrl.endsWith('/')) {
       originalUrl = originalUrl.substr(0, originalUrl.length - 1);
     }
-
-    const preparedParams =
-      !isShouldReduceTaks &&
-      (!_schema || _schema.params !== false) &&
-      prepareParams(path);
 
     const _onAbortedCallbacks = !isShouldReduceTaks && [];
     const _handleOnAborted =
