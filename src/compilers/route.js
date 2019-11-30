@@ -65,7 +65,7 @@ export default (fn) => {
 
   if (lines.length > 0) {
     for (const line of lines) {
-      if (line.substr(0, 2) === '//') {
+      if (line.includes('//')) {
         continue;
       }
 
@@ -101,6 +101,8 @@ export default (fn) => {
   }
 
   contentLines = contentLines.replace(CONTENT_SPACE_TRIM_REGEX, ' ');
+
+  console.log(contentLines);
 
   return eval(contentLines);
 };
