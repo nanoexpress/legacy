@@ -186,13 +186,25 @@ export default class Route {
       ) {
         const _oldRouteFunction = routeFunction;
         routeFunction = (req, res) => {
-          return _oldRouteFunction(req, res).then((data) => {
-            if (!isAborted && data && data !== res) {
-              isAborted = true;
-              return res.send(data);
-            }
-            return null;
-          });
+          return _oldRouteFunction(req, res)
+            .then((data) => {
+              if (!isAborted && data && data !== res) {
+                isAborted = true;
+                return res.send(data);
+              }
+              return null;
+            })
+            .catch((err) => {
+              if (!isAborted) {
+                if (_config._errorHandler) {
+                  return _config._errorHandler(err, req, res);
+                }
+                res.status(err.code || err.status || 500);
+                res.send({ error: err.message });
+                isAborted = true;
+              }
+              return null;
+            });
         };
       }
 
