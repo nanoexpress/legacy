@@ -12,9 +12,9 @@ Nano-framework for Node.js powered by uWebSockets.js
 
 ## Warning
 
-- Use `node 12` or greater version if possible
-- Use `pro-esm` branch for `node 12` as it's native ESM
-- `pro` branch will not get features fast as `pro-esm`
+- Use [Node 12](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md) or greater version if possible
+- Use [pro-esm](https://github.com/dalisoft/nanoexpress/tree/pro-esm) branch for [Node 12](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md) as it has native ESM support
+- [pro](https://github.com/dalisoft/nanoexpress/tree/pro) branch will not get features fast as [pro-esm](https://github.com/dalisoft/nanoexpress/tree/pro)
 
 ## Notes
 
