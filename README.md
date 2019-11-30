@@ -12,6 +12,12 @@ Nano-framework for Node.js powered by uWebSockets.js
 
 ## Warning
 
+- Use `node 12` or greater version if possible
+- Use `pro-esm` branch for `node 12` as it's native ESM
+- `pro` branch will not get features fast as `pro-esm`
+
+## Notes
+
 - This library does not support HTTP2!
 - This branch (PRO) is differs from master/dev branches
 - This branch is paid for commercial products if sources are closed
