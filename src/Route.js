@@ -137,6 +137,17 @@ export default class Route {
       return (res, req) => routeFunction(req, res);
     }
 
+    // Filter middlewares before Compile to methods matching
+    // to keep performance up-to-date
+    middlewares = middlewares.filter((middleware) => {
+      if (middleware.methods) {
+        if (!middleware.methods.includes(method)) {
+          return false;
+        }
+      }
+      return middleware;
+    });
+
     // Quick dirty hack to performance improvement
     if (!isCanCompiled && middlewares.length === 0) {
       const compile = RouteCompiler(routeFunction);
@@ -175,25 +186,13 @@ export default class Route {
       ) {
         const _oldRouteFunction = routeFunction;
         routeFunction = (req, res) => {
-          return _oldRouteFunction(req, res)
-            .then((data) => {
-              if (!isAborted && data && data !== res) {
-                isAborted = true;
-                return res.send(data);
-              }
-              return null;
-            })
-            .catch((err) => {
-              if (!isAborted) {
-                if (_config._errorHandler) {
-                  return _config._errorHandler(err, req, res);
-                }
-                res.status(err.code || err.status || 500);
-                res.send({ error: err.message });
-                isAborted = true;
-              }
-              return null;
-            });
+          return _oldRouteFunction(req, res).then((data) => {
+            if (!isAborted && data && data !== res) {
+              isAborted = true;
+              return res.send(data);
+            }
+            return null;
+          });
         };
       }
 
@@ -209,31 +208,14 @@ export default class Route {
             middleware.then ||
             middleware.constructor.name === 'AsyncFunction'
           ) {
-            return null;
+            return middleware;
           } else {
             const _oldMiddleware = middleware;
             middleware = function(req, res) {
-              return new Promise((resolve) => {
+              return new Promise((resolve, reject) => {
                 _oldMiddleware(req, res, (err, done) => {
                   if (err) {
-                    if (_config._errorHandler) {
-                      return _config._errorHandler(err, req, res);
-                    }
-
-                    res.status(err.status || err.code || 400, true);
-                    res.writeStatus(res.statusCode);
-                    res.writeHeader(
-                      'Content-Type',
-                      'application/json; charset=utf-8'
-                    );
-
-                    resolve();
-                    res.end(
-                      `{"error":"${
-                        typeof err === 'string' ? err : err.message
-                      }"}`
-                    );
-                    isAborted = true;
+                    reject(err);
                   } else {
                     resolve(done);
                   }
@@ -370,11 +352,7 @@ export default class Route {
             req.query = queries(req, _schema && _schema.query);
           }
           if (bodyAllowedMethod && (!_schema || _schema.body !== false)) {
-            const bodyResponse = await body(req, res, attachOnAborted);
-
-            if (bodyResponse) {
-              req.body = bodyResponse;
-            }
+            req.body = await body(req, res);
           }
         }
 
@@ -395,8 +373,23 @@ export default class Route {
             if (isAborted) {
               break;
             }
+            await middleware(req, res).catch((err) => {
+              if (_config._errorHandler) {
+                return _config._errorHandler(err, req, res);
+              }
 
-            await middleware(req, res);
+              res.status(err.status || err.code || 500, true);
+              res.writeStatus(res.statusCode);
+              res.writeHeader(
+                'Content-Type',
+                'application/json; charset=utf-8'
+              );
+
+              res.end(
+                `{"error":"${typeof err === 'string' ? err : err.message}"}`
+              );
+              isAborted = true;
+            });
           }
         }
 
