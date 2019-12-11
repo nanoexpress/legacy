@@ -174,18 +174,18 @@ export default function(
   return new Promise((resolve, reject) => {
     readStream
       .on('error', (err) => {
+        readStream.destroy();
         if (!isAborted) {
           res.writeStatus('500 Internal server error');
           res.end();
-          reject(err);
         }
-        readStream.destroy();
+        reject(err);
       })
       .on('end', () => {
         if (!isAborted) {
           res.end();
-          resolve();
         }
+        resolve();
       });
   });
 }
