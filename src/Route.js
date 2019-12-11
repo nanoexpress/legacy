@@ -374,17 +374,11 @@ export default class Route {
             middlewares &&
             middlewares.length > 0
         ) {
-          for (
-            let i = 0, len = middlewares.length, middleware;
-            i < len;
-            i++
-          ) {
-            middleware = middlewares[i];
-
+          for (const middleware of middlewares) {
             if (isAborted) {
               break;
             }
-            await middleware(req, res).catch((err) => {
+            const response = await middleware(req, res).catch((err) => {
               if (_config._errorHandler) {
                 return _config._errorHandler(err, req, res);
               }
@@ -401,6 +395,10 @@ export default class Route {
               );
               isAborted = true;
             });
+
+            if (response === res) {
+              return;
+            }
           }
         }
 

@@ -185,7 +185,7 @@ export default function(
         if (!isAborted) {
           res.end();
         }
-        resolve();
+        resolve(res);
       });
   });
 }

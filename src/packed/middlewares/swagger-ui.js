@@ -12,15 +12,15 @@ module.exports = (config = {}) => {
   }
   const fn = async (req, res) => {
     if (config.url === undefined) {
-      config.url = `http://${req.getHeader('host')}/docs/swagger.json`;
+      config.url = `//${req.getHeader('host')}/docs/swagger.json`;
     }
 
     if (req.path.indexOf('/swagger-ui') !== -1) {
-      res.sendFile(
+      return res.sendFile(
         `${config.fsPath}${req.path.substr(req.path.lastIndexOf('/'))}`
       );
     } else if (req.path === config.path) {
-      res.end(`
+      return res.end(`
       <!-- HTML for static distribution bundle build -->
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +62,7 @@ module.exports = (config = {}) => {
     window.onload = function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
-        url: "${config.url}",
+        url: window.location.protocol + "${config.url}",
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [
