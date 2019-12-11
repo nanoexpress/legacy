@@ -124,7 +124,13 @@ export default (
 
     if (!result || result.error) {
       if (config._errorHandler) {
-        return config._errorHandler(result.error, req, res);
+        return config._errorHandler(
+          result && result.error
+            ? result
+            : { message: 'The route you visited does not returned response' },
+          req,
+          res
+        );
       }
       res.writeHeader('Content-Type', 'text/json');
       return res.end(
