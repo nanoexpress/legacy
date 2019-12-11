@@ -284,7 +284,7 @@ export default class Route {
 
         if (
           fetchUrl &&
-            reqPathLength.length > 1 &&
+            reqPathLength > 1 &&
             req.path.charAt(reqPathLength - 1) === '/'
         ) {
           req.path = req.path.substr(0, reqPathLength - 1);
@@ -310,7 +310,7 @@ export default class Route {
 
         if (
           fetchUrl &&
-            reqPathLength.length > 1 &&
+            reqPathLength > 1 &&
             req.path.charAt(reqPathLength - 1) === '/'
         ) {
           req.path = req.path.substr(0, reqPathLength - 1);

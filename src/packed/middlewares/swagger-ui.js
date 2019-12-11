@@ -5,12 +5,12 @@ module.exports = (config = {}) => {
     config.title = 'nanoexpress - Swagger UI';
   }
   if (config.path === undefined) {
-    config.path = '/docs/';
+    config.path = '/docs';
   }
   if (config.fsPath === undefined) {
     config.fsPath = absolutePath();
   }
-  return (req, res, next) => {
+  const fn = async (req, res) => {
     if (config.url === undefined) {
       config.url = `http://${req.getHeader('host')}/docs/swagger.json`;
     }
@@ -80,9 +80,9 @@ module.exports = (config = {}) => {
     }
   </script>
   </body>
-</html>      `);
-    } else {
-      next(null, true);
+</html>`);
     }
   };
+  fn.override = true;
+  return fn;
 };
