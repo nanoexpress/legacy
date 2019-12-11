@@ -170,17 +170,22 @@ export default function(
       }
     });
   }
-  readStream
-    .on('error', () => {
-      if (!isAborted) {
-        res.writeStatus('500 Internal server error');
-        res.end();
-      }
-      readStream.destroy();
-    })
-    .on('end', () => {
-      if (!isAborted) {
-        res.end();
-      }
-    });
+
+  return new Promise((resolve, reject) => {
+    readStream
+      .on('error', (err) => {
+        if (!isAborted) {
+          res.writeStatus('500 Internal server error');
+          res.end();
+          reject(err);
+        }
+        readStream.destroy();
+      })
+      .on('end', () => {
+        if (!isAborted) {
+          res.end();
+          resolve();
+        }
+      });
+  });
 }
