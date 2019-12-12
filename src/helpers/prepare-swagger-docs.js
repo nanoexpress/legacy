@@ -27,6 +27,10 @@ export default function swaggerDocsGenerator(
             ? 'requestBody'
             : typeName;
 
+    if (path[0] === ':') {
+      path = '{' + path.substr(1) + '}';
+    }
+
     if (swaggerDef.paths[path] === undefined) {
       swaggerDef.paths[path] = {};
     }
