@@ -13,6 +13,10 @@ export default function swaggerDocsGenerator(
     swaggerDef.paths = {};
   }
 
+  if (path.indexOf(':') !== -1) {
+    path = path.replace(/:(.*)\//, '{$1}');
+  }
+
   for (const typeName in schema) {
     if (schema[typeName] === false) {
       continue;
@@ -26,10 +30,6 @@ export default function swaggerDocsGenerator(
           : typeName === 'body'
             ? 'requestBody'
             : typeName;
-
-    if (path[0] === ':') {
-      path = '{' + path.substr(1) + '}';
-    }
 
     if (swaggerDef.paths[path] === undefined) {
       swaggerDef.paths[path] = {};
