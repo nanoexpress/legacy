@@ -24,7 +24,8 @@ export default function(
   let isAborted = false;
   const res = this;
 
-  const { headers = {}, onAborted } = res.__request;
+  const { headers, onAborted } = res.__request;
+  const responseHeaders = {};
 
   const stat = statSync(path);
   const { mtime } = stat;
@@ -40,27 +41,27 @@ export default function(
   // handling last modified
   if (lastModified) {
     // Return 304 if last-modified
-    if (headers['if-modified-since']) {
+    if (headers && headers['if-modified-since']) {
       if (new Date(headers['if-modified-since']) >= mtime) {
         res.writeStatus('304 Not Modified');
         return res.end();
       }
     }
-    headers['last-modified'] = mtimeutc;
+    responseHeaders['Last-Modified'] = mtimeutc;
   }
-  headers['content-type'] = getMime(path);
+  responseHeaders['Content-Type'] = getMime(path);
 
   // write data
   let start = 0,
     end = size - 1;
 
-  if (headers.range) {
+  if (headers && headers.range) {
     compress = false;
     const parts = headers.range.replace(bytes, '').split('-');
     start = parseInt(parts[0], 10);
     end = parts[1] ? parseInt(parts[1], 10) : end;
-    headers['accept-ranges'] = 'bytes';
-    headers['content-range'] = `bytes ${start}-${end}/${size}`;
+    responseHeaders['Accept-Ranges'] = 'bytes';
+    responseHeaders['Content-Range'] = `bytes ${start}-${end}/${size}`;
     size = end - start + 1;
     res.writeStatus('206 Partial Content');
   }
@@ -85,18 +86,21 @@ export default function(
     const l = compressionOptions.priority.length;
     for (let i = 0; i < l; i++) {
       const type = compressionOptions.priority[i];
-      if (headers['accept-encoding'].indexOf(type) > -1) {
+      if (headers && headers['accept-encoding'].indexOf(type) > -1) {
         compressed = true;
         const compressor = compressions[type](compressionOptions);
         readStream.pipe(compressor);
         readStream = compressor;
-        headers['content-encoding'] = compressionOptions.priority[i];
+        responseHeaders['Content-Encoding'] = compressionOptions.priority[i];
         break;
       }
     }
   }
 
-  res.writeHeaders(headers);
+  for (const key in responseHeaders) {
+    res.writeHeader(key, responseHeaders[key]);
+  }
+
   // check cache
   if (cache && !compressed) {
     return cache.wrap(
