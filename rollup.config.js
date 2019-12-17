@@ -29,7 +29,8 @@ export default [
     input: './src/static.js',
     output: {
       format: 'cjs',
-      file: './build/static.js'
+      file: './build/static.js',
+      sourcemap: true
     },
     plugins,
     external
@@ -38,7 +39,8 @@ export default [
     input: './src/Route.js',
     output: {
       format: 'cjs',
-      file: './build/Route.js'
+      file: './build/Route.js',
+      sourcemap: true
     },
     plugins,
     external
@@ -48,7 +50,8 @@ export default [
     output: {
       format: 'cjs',
       file: './build/nanoexpress.js',
-      esModule: false
+      esModule: false,
+      sourcemap: true
     },
     external,
     plugins
