@@ -1,4 +1,12 @@
-import { headers, cookies, queries, params, body } from './normalizers';
+import {
+  headers,
+  cookies,
+  queries,
+  params,
+  body,
+  stream,
+  pipe
+} from './normalizers';
 import { HttpResponse } from './proto';
 import { Route as RouteCompiler } from './compilers';
 import {
@@ -371,8 +379,12 @@ export default class Route {
           if (!_schema || _schema.query !== false) {
             req.query = queries(req, _schema && _schema.query);
           }
-          if (bodyAllowedMethod && (!_schema || _schema.body !== false)) {
-            req.body = await body(req, res);
+          if (!isRaw && bodyAllowedMethod && res.onData) {
+            stream(req, res);
+            req.pipe = pipe;
+          }
+          if (req.stream && (!_schema || _schema.body !== false)) {
+            await body(req);
           }
         }
 

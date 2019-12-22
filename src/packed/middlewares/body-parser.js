@@ -13,7 +13,7 @@ module.exports = ({ json = true, urlEncoded = true } = {}) => {
           urlEncoded &&
           contentType.indexOf('/x-www-form-urlencoded') !== -1
         ) {
-          req.body = qs.parse(req.body);
+          req.body = qs.parse(body);
         }
       }
     }

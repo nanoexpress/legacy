@@ -1,26 +1,36 @@
 const nanoexpress = require('..');
-const fileUpload = require('../node_modules/express-fileupload');
+const bodyParser = require('../src/packed/middlewares/body-parser');
+const fileUpload = require('../src/packed/middlewares/file-upload');
 
 const path = require('path');
 
 const app = nanoexpress();
 
-app.use(fileUpload({ useTempFiles: true }));
+app.use(bodyParser());
+app.use(fileUpload());
 
-app.get('/', () => 'ok');
+app.get('/', async () => 'ok');
 
 app.post('/', (req, res) => {
   console.debug('files', req.files);
   console.debug('body', req.body);
 
-  req.files.file.mv(path.join(__dirname, '/uploads/file.jpg'), function(err) {
-    if (err) {
-      res.status(500);
-      return res.send(err);
-    }
+  if (!req.files || Object.keys(req.files).length === 0) {
+    res.status(400);
+    return res.end('No files was provided');
+  }
 
-    return res.send('File uploaded!');
-  });
+  for (const file of req.files) {
+    file
+      .mv(path.resolve('./examples/' + file.filename))
+      .then(() => {
+        res.send('File Uploaded!');
+      })
+      .catch((err) => {
+        res.status(500);
+        return res.send(err);
+      });
+  }
 });
 
 app.listen(4003);
