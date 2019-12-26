@@ -11,7 +11,7 @@ module.exports = (config = {}) => {
     }
 
     if (req.path === config.path) {
-      res.end(`
+      return res.end(`
     <!DOCTYPE html>
     <html>
       <head>
