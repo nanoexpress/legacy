@@ -150,6 +150,16 @@ CMD ["node", "server.js"]
 
 And to other libraries which used to create this library and without these libraries wouldn't be possible to create this library
 
+## Sponsors
+
+### Platinum Sponsor (1000\$+)
+
+[MyScreen](https://myscreen.ru)
+
+### Gold Sponsor (200\$+)
+
+[Sergey N](https://github.com/mrauhu)
+
 ## License
 
 [![license](https://img.shields.io/github/license/dalisoft/nanoexpress.svg)](https://github.com/dalisoft/nanoexpress/blob/master/LICENSE)
