@@ -44,9 +44,9 @@ export default (path = '/*', fns, config, ajv, method, app) => {
     return config._notFoundHandler
       ? config._notFoundHandler
       : (res) =>
-        res.end(
-          '{"middleware_type":"sync","error":"The route handler not found"}'
-        );
+          res.end(
+            '{"middleware_type":"sync","error":"The route handler not found"}'
+          );
   }
 
   if (route === undefined) {
@@ -61,64 +61,66 @@ export default (path = '/*', fns, config, ajv, method, app) => {
   const handler = empty
     ? route
     : async (req, res, config) => {
-      let middlewareChainingTransferPreviousResult;
-      for (const fn of prepared) {
-        if (fn.simple || !fn.async) {
-          fn(req, res, config, middlewareChainingTransferPreviousResult);
+        let middlewareChainingTransferPreviousResult;
+        for (const fn of prepared) {
+          if (fn.simple || !fn.async) {
+            fn(req, res, config, middlewareChainingTransferPreviousResult);
 
-          if (error && !middlewareChainingTransferPreviousResult) {
-            if (error && !res.aborted) {
-              if (config._errorHandler) {
-                return config._errorHandler(error, req, res);
+            if (error && !middlewareChainingTransferPreviousResult) {
+              if (error && !res.aborted) {
+                if (config._errorHandler) {
+                  return config._errorHandler(error, req, res);
+                }
+                return res.end(
+                  `{"middleware_type":"${fn.type}",error":"${error.message}"}`
+                );
               }
-              return res.end(
-                `{"middleware_type":"${fn.type}",error":"${error.message}"}`
-              );
+              return;
             }
-            return;
-          }
-        } else {
-          const middleware = await fn(
-            req,
-            res,
-            config,
-            middlewareChainingTransferPreviousResult
-          ).catch((error) => ({
-            error
-          }));
+          } else {
+            const middleware = await fn(
+              req,
+              res,
+              config,
+              middlewareChainingTransferPreviousResult
+            ).catch((error) => ({
+              error
+            }));
 
-          if (middleware && middleware.error) {
-            if (!res.aborted) {
-              if (config._errorHandler) {
-                return config._errorHandler(middleware.error, req, res);
+            if (middleware === res) {
+              return res;
+            } else if (middleware && middleware.error) {
+              if (!res.aborted) {
+                if (config._errorHandler) {
+                  return config._errorHandler(middleware.error, req, res);
+                }
+                return res.end(
+                  `{"middleware_type":"${fn.type}",error":"${middleware.error.message}"}`
+                );
               }
-              return res.end(
-                `{"middleware_type":"${fn.type}",error":"${middleware.error.message}"}`
-              );
+              return;
             }
-            return;
-          }
 
-          middlewareChainingTransferPreviousResult = middleware;
+            middlewareChainingTransferPreviousResult = middleware;
+          }
         }
-      }
 
-      if (method === 'options') {
-        return undefined;
-      }
+        if (method === 'options') {
+          return undefined;
+        }
 
-      if (!route.async || route.simple) {
-        route(req, res, config, middlewareChainingTransferPreviousResult);
-        return;
-      }
+        if (!route.async || route.simple) {
+          route(req, res, config, middlewareChainingTransferPreviousResult);
+          return;
+        }
 
-      return route(
-        req,
-        res,
-        config,
-        middlewareChainingTransferPreviousResult
-      );
-    };
+        return route(
+          req,
+          res,
+          config,
+          middlewareChainingTransferPreviousResult
+        );
+      };
 
   handler.async = empty ? route.async : allAsync;
   handler.simple = route.simple;

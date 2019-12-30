@@ -41,18 +41,18 @@
   "dependencies": {
     "@dalisoft/events": "^0.2.0",
     "debug": "^4.1.1",
-    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v16.2.0"
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v16.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "coveralls": "^3.0.6",
-    "eslint": "^6.3.0",
+    "eslint": "^6.8.0",
     "husky": "^3.0.5",
     "jest": "^24.8.0",
     "lint-staged": "^9.2.5",
     "prettier": "^1.17.1",
-    "rollup": "^1.20.3",
+    "rollup": "^1.27.14",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-run": "^1.1.0"

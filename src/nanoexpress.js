@@ -270,10 +270,12 @@ const nanoexpress = (options = {}) => {
           }
           if (isStreamableResource) {
             await sendFile(res, req, pathNormalisedFileName, streamConfig);
+            return res;
           } else {
             const sendFile = await readFile(pathNormalisedFileName, 'utf-8');
             res.end(sendFile);
             res.__called = true;
+            return res;
           }
         };
         if (addPrettyUrl && fileName === index) {

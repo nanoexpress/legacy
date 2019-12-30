@@ -19,13 +19,7 @@
       }
     ],
     "eol-last": ["error", "always"],
-    "indent": [
-      "error",
-      2,
-      {
-        "MemberExpression": 1
-      }
-    ],
+    "indent": "off",
     "no-multiple-empty-lines": ["error"],
     "no-new-symbol": "error",
     "no-trailing-spaces": ["error"],

@@ -82,7 +82,6 @@ declare namespace nanoexpress {
       cache?: boolean
     ): Promise<HttpResponse>;
     json(result: object | any[]): HttpResponse;
-    cork(fn: Function): HttpResponse;
     setCookie(
       key: string,
       value: string,

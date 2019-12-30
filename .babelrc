@@ -5,7 +5,7 @@
       {
         "targets": {
           "esmodules": false,
-          "node": "8.10"
+          "node": "12"
         }
       }
     ]
