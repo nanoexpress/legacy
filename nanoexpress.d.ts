@@ -51,6 +51,7 @@ declare namespace nanoexpress {
     cookies: HttpRequestCookies;
     query: HttpRequestQueries;
     params: HttpRequestParams;
+    getIP(): string;
     body?: HttpRequestBody;
     __response?: HttpResponse;
   }
