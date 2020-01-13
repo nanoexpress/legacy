@@ -106,12 +106,12 @@ export default (path = '/*', fns, config, ajv, method, app) => {
         }
 
         if (method === 'options') {
-          return undefined;
+          return res;
         }
 
         if (!route.async || route.simple) {
           route(req, res, config, middlewareChainingTransferPreviousResult);
-          return;
+          return res;
         }
 
         return route(

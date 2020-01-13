@@ -26,7 +26,8 @@ export default {
   output: {
     format: 'cjs',
     file: './build/nanoexpress.js',
-    esModule: false
+    esModule: false,
+    sourcemaps: true
   },
   external,
   plugins

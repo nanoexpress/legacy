@@ -20,6 +20,8 @@ For more information, please look at [Ajv docs](http://ajv.js.org)
 
 Performance tip #2: _If you don't want use any or all (except `body`) of these validation method, please set it to `false` for performance reason_
 
+Important #1: _You always should return `HttpResponse` from `Validation handler` for stability reason_
+
 ```js
 app.get(
   '/',

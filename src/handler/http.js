@@ -31,11 +31,11 @@ export default (
     const request =
       bodyCall && res.onData
         ? await http.request(req, res, bodyCall, schema).catch((err) => {
-          errors = {
-            type: 'errors',
-            errors: [{ type: 'body', messages: [err.message] }]
-          };
-        })
+            errors = {
+              type: 'errors',
+              errors: [{ type: 'body', messages: [err.message] }]
+            };
+          })
         : http.request(req, res, false, schema);
 
     if (validationStringify) {
@@ -61,7 +61,10 @@ export default (
         }
       }
 
-      if (errors && !res.aborted) {
+      if (errors) {
+        if (res.aborted) {
+          return res;
+        }
         if (config._validationErrorHandler) {
           const validationHandlerResult = config._validationErrorHandler(
             errors,
@@ -69,10 +72,12 @@ export default (
             res
           );
 
+          if (validationHandlerResult === res) {
+            return;
+          }
+
           if (validationHandlerResult && validationHandlerResult.errors) {
             errors = validationHandlerResult;
-          } else {
-            return config._validationErrorHandler(errors, req, res);
           }
         }
         return res.end(validationStringify(errors));
@@ -86,7 +91,16 @@ export default (
 
     if (!validationStringify && errors) {
       if (config._validationErrorHandler) {
-        return config._validationErrorHandler(errors, req, res);
+        const validationHandler = config._validationErrorHandler(
+          errors,
+          req,
+          res
+        );
+
+        if (validationHandler === res) {
+          return res;
+        }
+        return res.send(validationHandler);
       } else {
         return res.send(errors);
       }
@@ -118,8 +132,8 @@ export default (
       error
     }));
 
-    if (res.aborted || res.stream) {
-      return undefined;
+    if (result === res || res.aborted || res.stream) {
+      return res;
     }
 
     if (!result || result.error) {
