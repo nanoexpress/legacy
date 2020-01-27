@@ -47,7 +47,7 @@ _You can install `wrk` via `Homebrew` in `macOS` or `Linux`_
 
 **Benchmark command**: `wrk -t1 -d60 -c100`
 
-## Motiviation
+## Motivation
 
 I've long-time planned somehow create own Express-like alternative Node.js framework, then seen uWebSockets.js. Almost 2 month i've think how do this right and decided to create Node.js framework with almost same as Express API.
 
