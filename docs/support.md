@@ -14,9 +14,8 @@ And to other libraries which used to create this library and without these libra
 
 ## This project
 
-### You can support this project by Donating
+### You can support this project by support me via Patreon
 
-[![Beerpay](https://img.shields.io/beerpay/dalisoft/nanoexpress.svg)](https://beerpay.io/dalisoft/nanoexpress/)
 [![GitHub issues](https://img.shields.io/github/issues/dalisoft/nanoexpress.svg)](http://github.com/dalisoft/nanoexpress/issues)
 
 ### or

@@ -152,27 +152,14 @@ And to other libraries which used to create this library and without these libra
 
 ## Sponsors
 
-### Platinum Sponsor (1000\$+)
+### Sponsors will get free access to
 
-[MyScreen](https://myscreen.ru)
-
-### Gold Sponsor (200\$+)
+- Private Telegram all-before updates channel
+- Private Telegram votes channel
+- Private Telegram discussion chat
 
 [Sergey N](https://github.com/mrauhu)
 
 ## License
 
 [![license](https://img.shields.io/github/license/dalisoft/nanoexpress.svg)](https://github.com/dalisoft/nanoexpress/blob/master/LICENSE)
-
-## Support
-
-[![Beerpay](https://img.shields.io/beerpay/dalisoft/nanoexpress.svg)](https://beerpay.io/dalisoft/nanoexpress/)
-[![GitHub issues](https://img.shields.io/github/issues/dalisoft/nanoexpress.svg)](http://github.com/dalisoft/nanoexpress/issues)
-
-- Star project
-- Fork project
-- Add Tests to Project
-- Watch project
-- Report bugs
-- Fix issue
-- Make PR
