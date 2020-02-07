@@ -8,12 +8,12 @@ module.exports = ({ json = true, urlEncoded = true } = {}) => {
       const contentType = headers['content-type'];
       if (contentType) {
         if (json && contentType.indexOf('/json') !== -1) {
-          req.body = JSON.parse(body);
+          req.body = JSON.parse(body.toString());
         } else if (
           urlEncoded &&
           contentType.indexOf('/x-www-form-urlencoded') !== -1
         ) {
-          req.body = qs.parse(body);
+          req.body = qs.parse(body.toString());
         }
       }
     }
