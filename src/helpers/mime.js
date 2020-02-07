@@ -173,4 +173,4 @@ const getMime = (path) => {
   return mimes[path.substr(i + 1).toLowerCase()];
 };
 
-export { getMime, mimes };
+module.exports = { getMime, mimes };
