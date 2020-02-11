@@ -14,11 +14,11 @@ Nano-framework for Node.js powered by uWebSockets.js
 
 Documentation available [here](https://github.com/dalisoft/nanoexpress/blob/master/docs/index.md)
 
-**Are you want faster and stable performance with extra features, see [PRO](https://github.com/dalisoft/nanoexpress/tree/pro) version**
+**If you want better, faster and stable performance with extra features, see [PRO](https://github.com/dalisoft/nanoexpress/tree/pro) version**
 
-_If you want **Suport** me, please see [Support](#support) section_
+_If you want **to suport** me, please see [Support](#support) section_
 
-_See [**Credits**](#credits) if you want which libraries i've used_
+_See [**Credits**](#credits) if you want to know which libraries I've used_
 
 ## Warning
 
@@ -26,9 +26,9 @@ This library does not support HTTP2!
 
 ## NOTE
 
-This library reached the `Stable` status and works good, see `/examples` folder.
+This library reached the `Stable` status and works well, see `/examples` folder.
 
-This library up to 25% slower than `uWebSockets.js` on normal and complex application because of method polyfilling layer. Basic usage/examples performance are same as `uWebSockets.js`, but not in all case gives you same performance.
+This library is up to 25% slower than `uWebSockets.js` in normal and complex application because of method polyfilling layer. Basic usage/examples performance are the same as `uWebSockets.js`, but not in all cases gives you the same performance.
 
 **Requires**: Node.js v10 or greater
 
@@ -39,7 +39,7 @@ This library up to 25% slower than `uWebSockets.js` on normal and complex applic
 
 Benchmarked on my macBook Pro 2012 13" (Core i5, 8Gb RAM) performance.
 
-You can see live benchmark results at [here](https://github.com/the-benchmarker/web-frameworks#results)
+You can see real benchmark results at [here](https://github.com/the-benchmarker/web-frameworks#results)
 
 **Note**: _Real-world app memory/rps may differs from these numbers and these numbers are in my macBook_
 
@@ -49,9 +49,9 @@ _You can install `wrk` via `Homebrew` in `macOS` or `Linux`_
 
 ## Motivation
 
-I've long-time planned somehow create own Express-like alternative Node.js framework, then seen uWebSockets.js. Almost 2 month i've think how do this right and decided to create Node.js framework with almost same as Express API.
+I've been planning for a long time how to create my own Express-like alternative Node.js framework, then saw uWebSockets.js. Almost during 2 months I was thinking how to do this right and decided to create Node.js framework with almost the same as Express API.
 
-This library makes very thin layer between uWebSockets.js and your code. But, gives you very Familiar and Clean API. Async/Await supported out-of-the-box!
+This library makes a very thin layer between uWebSockets.js and your code. But it gives you very Familiar and Clean API. Async/Await supported out-of-the-box!
 
 ## Features
 
@@ -76,7 +76,7 @@ This library makes very thin layer between uWebSockets.js and your code. But, gi
 
 ## Examples
 
-All examples are lives [here](https://github.com/dalisoft/nanoexpress/tree/master/examples)
+All examples are alive [here](https://github.com/dalisoft/nanoexpress/tree/master/examples)
 
 ## Built-in Middlewares
 
@@ -92,7 +92,7 @@ Built-in middlewares implemented at layer-level for performance reason and enabl
 
 ## In-box Middlewares
 
-I'm excluded in-box modules from initialization for performance reason
+I excluded in-box modules from initialization for performance reason
 
 ### How-to import
 
@@ -118,7 +118,7 @@ app.use(middlewares.passportInitialize()); // or app.use(passportInitialize());
 
 ## Docker Support
 
-If you using `alpine` or `slim` version of `node` images, some errors may happen and you can fix with this minimal guide
+If you use `alpine` or `slim` version of `node` images, some errors may happen and you can fix with this minimal guide
 
 ### Requires
 
@@ -148,7 +148,7 @@ CMD ["node", "server.js"]
 - [ajv](https://ajv.js.org)
 - [cookie](https://github.com/jshttp/cookie#readme)
 
-And to other libraries which used to create this library and without these libraries wouldn't be possible to create this library
+And to other libraries which are used to create this library and without these libraries wouldn't be possible to create this library
 
 ## Sponsors
 
