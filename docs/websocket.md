@@ -16,7 +16,7 @@ app.ws('/', (req, ws) => {
 
 ## Raw example
 
-Note: _Any polyfilled methods unavailable here, But performance may shock you!_
+Note: _Any polyfilled methods are unavailable here, but performance may shock you!_
 
 ```js
 app.ws('/', { isRaw: true }, (req, ws) => {
