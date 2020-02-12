@@ -1,10 +1,10 @@
 # Routes
 
-Routes are intellectual, not only good, because if your routes are simple, library uses direct calling to `uWebSockets.js` which improves response time by 30-40% and responses performance will be almost equal to `uWebSockets.js.
+Routes are intellectual, not only good, because if your routes are simple, library uses direct calling to `uWebSockets.js` which improves response time by 30-40% and response performance will be almost equal to `uWebSockets.js.
 
 Performance tip: _Using many middlewares may slow response performance_
 
-Note: If you want auto-handling your route, use as `Async` route. It's known bug!
+Note: If you want auto-handling your route, use as `Async` route. It's a known error!
 
 ## Async route
 
@@ -26,7 +26,7 @@ app.get('/', async (req, res) => {
 
 ## Express/Connect like route
 
-This library target is out-of-the-box async support and works good, but we recommend using `sync` aka Express/Connect like method for performance reason.
+This library target is out-of-the-box async support and works well, but we recommend using `sync` aka Express/Connect like method for performance reason.
 
 ### Basic example
 
@@ -48,7 +48,7 @@ app.post('/', (req, res) => {
 
 ## Raw example
 
-Note: _Any polyfilled methods unavailable here, But performance may shock you!_
+Note: _Any polyfilled methods are unavailable here, but performance may shock you!_
 
 ```js
 app.get('/', { isRaw: true }, (req, res) => {
@@ -58,7 +58,7 @@ app.get('/', { isRaw: true }, (req, res) => {
 
 ## Direct example
 
-Note: _Any polyfilled methods unavailable here, But performance may shock you!_
+Note: _Any polyfilled methods are unavailable here, but performance may shock you!_
 
 ```js
 app.get('/', { isRaw: true, direct: true }, (res, req) => {
