@@ -1,8 +1,8 @@
 # Benchmarks
 
-Note: _Multi-threading/Clustering available in Linux-only env_
+Note: _Multi-threading/Clustering is available in Linux-only env_
 
-Note #2: _Docker may be good place to get started with Clustering_
+Note #2: _Docker may be a good place to get started with Clustering_
 
 You can see live benchmark results at [here](https://github.com/the-benchmarker/web-frameworks#results)
 
@@ -14,7 +14,7 @@ You can see live benchmark results at [here](https://github.com/the-benchmarker/
 
 ![Memory Usage](https://github.com/dalisoft/nanoexpress/raw/master/.github/images/memory.png)
 
-Benchmarked on my macBook Pro 2012 13" (Core i5, 8Gb RAM) performance.
+While performing tests on my macBook Pro 2012 13" (Core i5, 8Gb RAM) performance is shown.
 
 **Note**: _Real-world app memory/rps may differs from these numbers and these numbers are in my macBook_
 
