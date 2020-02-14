@@ -16,6 +16,13 @@ app.get('/', async () => {
     return { error: true };
   }
 });
+app.get('/test', async (req, res) => {
+  const { test } = await new Promise((resolve) =>
+    setTimeout(resolve, 1, { test: 'ok' })
+  );
+
+  return res.send({ test });
+});
 
 // start server
 (async () => {
