@@ -30,22 +30,9 @@ This library reached the `Stable` status and works good, see `/examples` folder.
 
 This library up to 25% slower than `uWebSockets.js` on normal and complex application because of method polyfilling layer. Basic usage/examples performance are same as `uWebSockets.js`, but not in all case gives you same performance.
 
-**Requires**: Node.js v10 or greater
-
 ## Benchmarks
 
-![Benchmarks](https://github.com/dalisoft/nanoexpress/raw/master/.github/images/benchmark.png)
-![Memory Usage](https://github.com/dalisoft/nanoexpress/raw/master/.github/images/memory.png)
-
-Benchmarked on my macBook Pro 2012 13" (Core i5, 8Gb RAM) performance.
-
-You can see live benchmark results at [here](https://github.com/the-benchmarker/web-frameworks#results)
-
-**Note**: _Real-world app memory/rps may differs from these numbers and these numbers are in my macBook_
-
-_You can install `wrk` via `Homebrew` in `macOS` or `Linux`_
-
-**Benchmark command**: `wrk -t1 -d60 -c100`
+See [here](https://github.com/nanoexpress/pro-slim/blob/master/docs/benchmark.md)
 
 ## Motivation
 
@@ -115,30 +102,6 @@ app.use(middlewares.passportInitialize()); // or app.use(passportInitialize());
 - `express-session`
 - `express-graphql`
 - `passport`
-
-## Docker Support
-
-If you using `alpine` or `slim` version of `node` images, some errors may happen and you can fix with this minimal guide
-
-### Requires
-
-- git
-
-#### For `git` missing error
-
-```Dockerfile
-# FROM ...
-RUN apk update && apk add --no-cache git
-# your scripts
-```
-
-#### For `Alpine` incompatible error
-
-```Dockerfile
-# your scripts
-RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
-CMD ["node", "server.js"]
-```
 
 ## Credits
 
