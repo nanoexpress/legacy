@@ -1,134 +1,20 @@
 # nanoexpress
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/dalisoft/nanoexpress.svg)](https://greenkeeper.io/)
-[![Travis](https://img.shields.io/travis/dalisoft/nanoexpress.svg)](http://github.com/dalisoft/nanoexpress)
-[![Code Climate](https://codeclimate.com/github/dalisoft/nanoexpress/badges/gpa.svg)](https://codeclimate.com/github/dalisoft/nanoexpress)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dalisoft/nanoexpress/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dalisoft/nanoexpress/?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/dalisoft/nanoexpress/badge.svg?branch=master)](https://coveralls.io/github/dalisoft/nanoexpress?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/nanoexpress/nanoexpress.svg)](https://greenkeeper.io/)
+[![Travis](https://img.shields.io/travis/nanoexpress/nanoexpress.svg)](http://github.com/nanoexpress/nanoexpress)
+[![Code Climate](https://codeclimate.com/github/nanoexpress/nanoexpress/badges/gpa.svg)](https://codeclimate.com/github/nanoexpress/nanoexpress)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nanoexpress/nanoexpress/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nanoexpress/nanoexpress/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/nanoexpress/nanoexpress/badge.svg?branch=master)](https://coveralls.io/github/nanoexpress/nanoexpress?branch=master)
 [![NPM Downloads](https://img.shields.io/npm/dm/nanoexpress.svg)](https://npmjs.org/package/nanoexpress)
 [![NPM Version](https://img.shields.io/npm/v/nanoexpress.svg)](https://npmjs.org/package/nanoexpress)
 [![size](https://img.badgesize.io/https://unpkg.com/nanoexpress)](http://unpkg.com/nanoexpress)
 [![gzipsize](https://img.badgesize.io/https://unpkg.com/nanoexpress?compression=gzip)](http://unpkg.com/nanoexpress)
+[![GitHub issues](https://img.shields.io/github/issues/nanoexpress/nanoexpress.svg)](http://github.com/nanoexpress/nanoexpress/issues)
 
 Nano-framework for Node.js powered by uWebSockets.js
 
-Documentation available [here](https://github.com/dalisoft/nanoexpress/blob/master/docs/index.md)
-
-**Are you want faster and stable performance with extra features, see [PRO](https://github.com/dalisoft/nanoexpress/tree/pro) version**
-
-_If you want **Suport** me, please see [Support](#support) section_
-
-_See [**Credits**](#credits) if you want which libraries i've used_
-
-## Warning
-
-This library does not support HTTP2!
-
-## NOTE
-
-This library reached the `Stable` status and works good, see `/examples` folder.
-
-This library up to 25% slower than `uWebSockets.js` on normal and complex application because of method polyfilling layer. Basic usage/examples performance are same as `uWebSockets.js`, but not in all case gives you same performance.
-
-## Benchmarks
-
-See [here](https://github.com/nanoexpress/pro-slim/blob/master/docs/benchmark.md)
-
-## Motivation
-
-I've long-time planned somehow create own Express-like alternative Node.js framework, then seen uWebSockets.js. Almost 2 month i've think how do this right and decided to create Node.js framework with almost same as Express API.
-
-This library makes very thin layer between uWebSockets.js and your code. But, gives you very Familiar and Clean API. Async/Await supported out-of-the-box!
-
-## Features
-
-- Async/Await out-of-the-box
-- No async mode supported
-- Easy to use (for Express users especially)
-- Blazing fast performance
-- Ultra lightweight size
-- Resource (CPU / Memory) effecient
-- Familiar API
-- Normalised API
-- Can define routes Declaratively
-- Express-compatible middleware
-- In-built middlewares
-- In-built Stream (Video stream, yay!) support
-- In-built WebSocket support (Express-like API and Events)
-- In-built Schema validator via `Ajv`
-- Out-of-the-box `fast-json-stringify` support via `{schema}` middleware
-- Small working examples
-- TypeScript declaration
-- Tests and CI checked code
-
-## Examples
-
-All examples are lives [here](https://github.com/dalisoft/nanoexpress/tree/master/examples)
-
-## Built-in Middlewares
-
-Built-in middlewares implemented at layer-level for performance reason and enables automacilly when needed, not always
-
-- `cookie`
-- `body-parser`
-- `express-ws` (for comparing, uWS has built-in support at core-level)
-- `fast-json-stringify` (for serialization)
-- `express-ajv` (for comparing, for validation, this library does it at layer-level)
-- `redoc`
-- `swagger-ui`
-
-## In-box Middlewares
-
-I'm excluded in-box modules from initialization for performance reason
-
-### How-to import
-
-```js
-import { middlewares } from 'nanoexpress/packed';
-// or import { passportInitialize } from 'nanoexpress/packed/middlewares';
-
-const app = nanoexpress();
-app.use(middlewares.passportInitialize()); // or app.use(passportInitialize());
-```
-
-- `passport`
-
-## Working Middlewares
-
-- `body-parser` (yes, if you don't want built-in)
-- `express-fileupload`
-- `cors` (yes, `express` `cors` middleware)
-- `express-jwt`
-- `express-session`
-- `express-graphql`
-- `passport`
-
-## Credits
-
-- [uWebSockets.js](https://github.com/uNetworking/uWebSockets.js)
-- [Siffr Server](https://github.com/sifrr/sifrr/tree/master/packages/server/sifrr-server)
-- [fast-json-stringify](https://github.com/fastify/fast-json-stringify)
-- [ajv](https://ajv.js.org)
-- [cookie](https://github.com/jshttp/cookie#readme)
-
-And to other libraries which used to create this library and without these libraries wouldn't be possible to create this library
-
-## Sponsors
-
-### Sponsors will get free access to
-
-- Private Telegram all-before updates channel
-- Private Telegram votes channel
-- Private Telegram discussion chat
-
-### Platinum sponsors
-
-- [Sergey N](https://github.com/mrauhu)
-
-### Ultra sponsors
-
-- [Yaroslav Dobzhanskij](https://github.com/yarsky-tgz)
+See more info at [docs](https://nanoexpress.js.org)
 
 ## License
 
-[![license](https://img.shields.io/github/license/dalisoft/nanoexpress.svg)](https://github.com/dalisoft/nanoexpress/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/nanoexpress/nanoexpress.svg)](https://github.com/nanoexpress/nanoexpress/blob/master/LICENSE)
