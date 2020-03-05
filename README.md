@@ -1,6 +1,5 @@
 # nanoexpress
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/nanoexpress/nanoexpress.svg)](https://greenkeeper.io/)
 [![Travis](https://img.shields.io/travis/nanoexpress/nanoexpress.svg)](http://github.com/nanoexpress/nanoexpress)
 [![Code Climate](https://codeclimate.com/github/nanoexpress/nanoexpress/badges/gpa.svg)](https://codeclimate.com/github/nanoexpress/nanoexpress)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nanoexpress/nanoexpress/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nanoexpress/nanoexpress/?branch=master)
