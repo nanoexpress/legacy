@@ -5,6 +5,10 @@
   "main": "build/nanoexpress.js",
   "module": "src/nanoexpress.js",
   "typings": "nanoexpress.d.ts",
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/dalisoft"
+  },
   "scripts": {
     "dev": "rollup -c -w",
     "watch": "nodemon build/server.js",
