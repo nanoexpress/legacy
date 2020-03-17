@@ -61,7 +61,7 @@ export default async (req, res) => {
       if (contentType.indexOf('/json') !== -1) {
         body = JSON.parse(body);
       } else if (contentType.indexOf('/x-www-form-urlencoded') !== -1) {
-        body = parse(req.body);
+        body = parse(body);
       }
     }
   }
