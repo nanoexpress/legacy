@@ -55,7 +55,7 @@
     "husky": "^4.0.2",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.3",
-    "prettier": "^1.17.1",
+    "prettier": "^2.0.1",
     "rollup": "^1.32.1",
     "rollup-plugin-node-resolve": "^5.2.0"
   },
