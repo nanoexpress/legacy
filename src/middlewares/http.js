@@ -43,7 +43,7 @@ export default (path = '/*', fns, config, ajv, method, app) => {
   if (error) {
     return config._notFoundHandler
       ? config._notFoundHandler
-      : (res) =>
+      : (req, res) =>
           res.end(
             '{"middleware_type":"sync","error":"The route handler not found"}'
           );

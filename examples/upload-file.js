@@ -13,7 +13,7 @@ app.post('/', (req, res) => {
   console.debug('files', req.files);
   console.debug('body', req.body);
 
-  req.files.file.mv(path.join(__dirname, '/uploads/file.jpg'), function(err) {
+  req.files.file.mv(path.join(__dirname, '/uploads/file.jpg'), function (err) {
     if (err) {
       res.status(500);
       return res.send(err);

@@ -124,10 +124,10 @@ const nanoexpress = (options = {}) => {
 
         // Set not found handler
         if (!_app.anyApplied) {
-          app.get(
+          _app.get(
             '/*',
             config._notFoundHandler ||
-              ((res) => {
+              ((req, res) => {
                 res.end(
                   '{"middleware_type":"sync","error":"The route handler not found"}'
                 );
@@ -149,9 +149,9 @@ const nanoexpress = (options = {}) => {
           if (token) {
             _app._instance = token;
             logger.log(
-              `[Server]: started successfully at [${
-                config.host
-              }:${port}] in [${Date.now() - time}ms]`
+              `[Server]: started successfully at [${config.host}:${port}] in [${
+                Date.now() - time
+              }ms]`
             );
             resolve(_app);
           } else {

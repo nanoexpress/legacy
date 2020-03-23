@@ -12,7 +12,7 @@ const compressions = {
 };
 const bytes = 'bytes=';
 
-export default async function(
+export default async function (
   path,
   {
     lastModified = true,

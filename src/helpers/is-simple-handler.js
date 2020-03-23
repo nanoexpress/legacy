@@ -13,10 +13,7 @@ const HttpRequestAdvancedProps = [
 const AllowedMembers = ['req', 'res'];
 
 const lineGoHandle = (string, handler) =>
-  string
-    .split('\n')
-    .map(handler)
-    .join('\n');
+  string.split('\n').map(handler).join('\n');
 
 const isMalicius = (string) =>
   !string.startsWith('async') && !string.startsWith('(re');

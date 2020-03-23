@@ -198,8 +198,8 @@ declare namespace nanoexpress {
     ): nanoexpressApp;
     setNotFoundHandler(
       notFoundHandlerCallback: (
-        res: HttpResponseBasic,
-        req: HttpRequestBasic
+        req: HttpRequestBasic,
+        res: HttpResponseBasic
       ) => HttpRequestBasic
     ): nanoexpressApp;
     setValidationErrorHandler(
