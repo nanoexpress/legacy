@@ -1,11 +1,11 @@
+import { Ajv, Options as AjvOptions } from 'ajv';
 import {
   AppOptions as AppOptionsBasic,
-  TemplatedApp as AppTemplatedApp,
   HttpRequest as HttpRequestBasic,
   HttpResponse as HttpResponseBasic,
+  TemplatedApp as AppTemplatedApp,
   WebSocket as WebSocketBasic
 } from 'uWebSockets.js';
-import { Ajv, Options as AjvOptions } from 'ajv';
 
 declare namespace nanoexpress {
   export interface SwaggerOptions {
@@ -157,6 +157,7 @@ declare namespace nanoexpress {
   }
 
   interface Middleware extends MiddlewareOption, HttpRoute {}
+  interface WsMiddleware extends MiddlewareOption, WsRoute {}
 
   interface validationErrorItems {
     type: string;
@@ -186,7 +187,7 @@ declare namespace nanoexpress {
     head(path: string, ...fns: Middleware[]): nanoexpressApp;
     trace(path: string, ...fns: Middleware[]): nanoexpressApp;
     any(path: string | Middleware, ...fns: Middleware[]): nanoexpressApp;
-    ws(path: string, ...fns: Middleware[]): nanoexpressApp;
+    ws(path: string, ...fns: WsMiddleware[]): nanoexpressApp;
     listen(port: number, host?: string): Promise<nanoexpressApp>;
     close(): boolean;
     setErrorHandler(
