@@ -1,4 +1,3 @@
-sudo: false
 language: node_js
 notifications:
   email: false
@@ -8,6 +7,7 @@ os:
 node_js:
   - '12'
   - '13'
+  - '14'
 install:
   - npm install
   - npm i cookie ajv fast-json-stringify
