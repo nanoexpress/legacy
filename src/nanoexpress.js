@@ -334,7 +334,7 @@ const nanoexpress = (options = {}) => {
     };
   });
 
-  _app.publish = app.publish;
+  _app.publish = (channel, message) => app.publish(channel, message);
 
   return _app;
 };
