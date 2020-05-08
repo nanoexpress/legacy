@@ -1,0 +1,6 @@
+{
+  "collectCoverage": true,
+  "coverageReporters": ["lcov"],
+  "coverageDirectory": "./tests/coverage",
+  "testEnvironment": "node"
+}
