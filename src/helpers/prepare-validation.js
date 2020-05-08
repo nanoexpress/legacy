@@ -56,13 +56,14 @@ export default (ajv, schema, config) => {
           }
           const isHttpCodes = Object.keys(_schema).every(isHttpCode);
 
-          const newSchema = {};
+          let newSchema;
           if (isHttpCodes) {
+            newSchema = {};
             for (const code in _schema) {
               newSchema[code] = fastJson(_schema[code]);
             }
           } else {
-            newSchema[type] = fastJson(_schema);
+            newSchema = fastJson(_schema);
           }
 
           responseSchema = newSchema;

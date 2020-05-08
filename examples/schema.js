@@ -10,7 +10,7 @@ app.get(
       query: {
         type: 'object',
         properties: {
-          test: { type: 'boolean' }
+          test: { type: 'string' }
         }
       },
       params: false,
